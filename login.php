@@ -3,7 +3,6 @@ include "connection.php";
 require 'vendor/autoload.php';
 
 use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 
 try {
     $input = file_get_contents("php://input");
