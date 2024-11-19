@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import useAuth from "../../utilities/hooks/useAuth";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
-import Dashboard from "../../pages/Dashboard";
+import Layout from "../../layouts/Layout";
+import AdminLayout from "../../layouts/AdminLayout";
+import StudentDashboard from "../../dashboard-variants/StudentDashboard";
+import AdminDashboard from "../../dashboard-variants/AdminDashboard";
+import InstructorDashboard from "../../dashboard-variants/InstructorDashboard";
 
 const AppRouter = () => {
-    const { logged_in } = useAuth(); // Get the logged-in status from useAuth
+    const { logged_in, user_type } = useAuth();
 
     return (
         <Router>
@@ -21,13 +25,25 @@ const AppRouter = () => {
                     element={logged_in ? <Navigate to="/dashboard" /> : <Signup />}
                 />
 
-                {/* Dashboard Route (Only Accessible if Logged In) */}
-                <Route
-                    path="/dashboard"
-                    element={logged_in ? <Dashboard /> : <Navigate to="/login" />}
-                />
+                {/* Role-based Layouts */}
+                {logged_in && user_type === "student" && (
+                    <Route path="/" element={<Layout userType="student" />}>
+                        {/* This element is filled in the <Outlet /> of the layout */}
+                        <Route path="dashboard" element={<StudentDashboard />} />
+                    </Route>
+                )}
+                {logged_in && user_type === "instructor" && (
+                    <Route path="/" element={<Layout userType="instructor" />}>
+                        <Route path="dashboard" element={<InstructorDashboard />} />
+                    </Route>
+                )}
+                {logged_in && user_type === "admin" && (
+                    <Route path="/" element={<AdminLayout />}>
+                        <Route path="dashboard" element={<AdminDashboard />} />
+                    </Route>
+                )}
 
-                {/* Fallback to Login */}
+                {/* Fallback */}
                 <Route path="*" element={<Navigate to={logged_in ? "/dashboard" : "/login"} />} />
             </Routes>
         </Router>
