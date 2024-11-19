@@ -4,7 +4,7 @@ import React from 'react'
 function InstructorDashboard() {
     return (
         <>
-            <div class="flex-test">
+            <div className="flex-test">
                 <span>Dashboard</span>
                 <p>Instructor Dashboard</p>
             </div>

@@ -17,7 +17,7 @@ const Login = () => {
 
     if (result.success) {
       // Redirect to dashboard on successful login
-      navigate("/dashboard");
+      window.location.reload();
     } else {
       // If login fails, the error will be handled by the hook
       console.error("Login failed:", result.message);
@@ -30,36 +30,40 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+    <div className="container">
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className="error">{error}</p>} {/* Show error from the hook */}
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+        <div className="signup-container">
+          <p>
+            Don’t have an account?{" "}
+          </p>
+          <button onClick={navigateToSignup}>Sign Up</button>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p className="error">{error}</p>} {/* Show error from the hook */}
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-      <p>
-        Don’t have an account?{" "}
-        <button onClick={navigateToSignup}>Sign Up</button>
-      </p>
+      </div>
     </div>
   );
 };
