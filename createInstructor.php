@@ -56,7 +56,7 @@ try {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, password, user_type) VALUES (?, ?, ?, 'instructor')";
     $stmt = $connection->prepare($sql);
     if ($stmt === false) {
         echo json_encode(["success" => false, "message" => "Failed to prepare statement"]);
