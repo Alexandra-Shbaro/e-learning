@@ -31,19 +31,15 @@ function StudentDashboard() {
                     <h1>My Courses</h1>
                     {Array.isArray(courses) && courses.length > 0 ? (
                         courses.map((dataObj, index) => (
-                            <div
+                            <a
                                 key={dataObj.course_id}
-                                style={{
-                                    width: "15em",
-                                    backgroundColor: "#35D841",
-                                    padding: 2,
-                                    borderRadius: 10,
-                                    marginBlock: 10,
-                                }}
+                                href={`/course/${dataObj.course_id}`} // Example URL
+                                className="course-card-link"
                             >
-                                <p style={{ fontSize: 20, color: 'white' }}>{dataObj.course_name}</p>
-                                <p>{dataObj.course_description}</p>
-                            </div>
+                                <div className="course-card">
+                                    <p className="course-title">{dataObj.course_name}</p>
+                                </div>
+                            </a>
                         ))
                     ) : (
                         <p>No courses available</p>

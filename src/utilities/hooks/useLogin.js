@@ -24,7 +24,6 @@ const useLogin = () => {
             if (response.data.success) {
                 const receivedToken = response.data.token;
 
-                // Store the token in localStorage for persistent login
                 localStorage.setItem('jwtToken', receivedToken);
 
                 setToken(receivedToken);

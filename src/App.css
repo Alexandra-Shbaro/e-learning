@@ -132,3 +132,28 @@
   justify-content: flex-start;
   flex-direction: column;
 }
+
+/***************************/
+
+.course-card-link {
+  text-decoration: none; 
+}
+
+.course-card-link :hover{
+  background-color: #2b3ee7;
+}
+
+.course-card {
+  background-color: #90aff0;
+  width: 15em;
+  padding: 2px;
+  border-radius: 10px;
+  margin-block: 10px;
+  cursor: pointer;  
+  text-align: center;
+}
+
+.course-title {
+  font-size: 20px;
+  color: white;
+}
