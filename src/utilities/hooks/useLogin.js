@@ -12,7 +12,7 @@ const useLogin = () => {
 
         try {
             const response = await axios.post(
-                'http://localhost/e-learning-backend/login.php', // Replace with your PHP endpoint URL
+                'http://localhost/e-learning-backend/login.php', 
                 { username, password },
                 {
                     headers: {

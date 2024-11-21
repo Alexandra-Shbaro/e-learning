@@ -27,7 +27,10 @@ const AppRouter = () => {
 
                 {/* Role-based Layouts */}
                 {logged_in && user_type === "student" && (
-                    <Route path="/dashboard" element={<StudentDashboard />} />
+                    <Route path="/" element={<Layout userType="student" />}>
+                        {/* This element is filled in the <Outlet /> of the layout */}
+                        <Route path="dashboard" element={<StudentDashboard />} />
+                    </Route>
                 )}
                 {logged_in && user_type === "instructor" && (
                     <Route path="/" element={<Layout userType="instructor" />}>
@@ -41,10 +44,7 @@ const AppRouter = () => {
                 )}
 
                 {/* Fallback */}
-                <Route
-                    path="*"
-                    element={<Navigate to={logged_in ? "/dashboard" : "/login"} />}
-                />
+                <Route path="*" element={<Navigate to={logged_in ? "/dashboard" : "/login"} />} />
             </Routes>
         </Router>
     );
