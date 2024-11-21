@@ -15,7 +15,7 @@ function sendJsonResponse($data, $statusCode = 200) {
     exit();
 }
 
-$secretKey = "zLqxD6TqRd5NV57jd8dVQj2jFK7fphgOWO/4mnCisjYX4RhWQDzxOqR4CXN0rh72IbpWoTSes3Cd6qABhT5ZSw=="; // REPLACE WITH YOUR ACTUAL SECRET KEY
+$secretKey = "zLqxD6TqRd5NV57jd8dVQj2jFK7fphgOWO/4mnCisjYX4RhWQDzxOqR4CXN0rh72IbpWoTSes3Cd6qABhT5ZSw=="; 
 
 $headers = getallheaders();
 $authHeader = $headers['Authorization'] ?? null;
