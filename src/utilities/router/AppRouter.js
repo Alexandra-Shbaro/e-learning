@@ -32,6 +32,18 @@ const AppRouter = () => {
                         <Route path="dashboard" element={<StudentDashboard />} />
                     </Route>
                 )}
+
+                {/* {logged_in && user_type === "student" && (
+                    <Route path="/courses" element={<Layout userType="student" />}>
+                        <Route path="/courses" element={<StudentCourses />} />
+                    </Route>
+                )}
+
+                {logged_in && user_type === "student" && (
+                    <Route path="/assignments" element={<Layout userType="student" />}>
+                        <Route path="/assignments" element={<StudentAssignments />} />                    </Route>
+                )} */}
+
                 {logged_in && user_type === "instructor" && (
                     <Route path="/" element={<Layout userType="instructor" />}>
                         <Route path="dashboard" element={<InstructorDashboard />} />

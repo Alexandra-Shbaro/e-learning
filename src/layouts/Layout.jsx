@@ -12,11 +12,9 @@ const Layout = ({ userType }) => {
                     <img src={logo} alt="Logo" className="logo" />
                 </div>
                 <div className="navbar-center">
-                    <a href="/dashboard" className="nav-link">Dashboard</a>
-                    <a href="/courses" className="nav-link">Courses</a>
-                    <a href="/assignments" className="nav-link">Assignments</a>
-                    {userType === "student" && <a href="/assignments" className="nav-link">Studen tonlt</a>}
-
+                    {userType === "student" && <a href="/" className="nav-link">Dashboard</a>}
+                    {userType === "student" && <a href="/courses" className="nav-link">Courses</a>}
+                    {userType === "student" && <a href="/assignments" className="nav-link">Assignments</a>}
                 </div>
                 <div className="navbar-right">
                     <button className="logout-button" onClick={logOut}>Logout</button>
